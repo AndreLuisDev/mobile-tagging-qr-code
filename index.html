@@ -62,6 +62,11 @@
         a.button:hover {
             background-color: #cc5200;
         }
+        .contador {
+            margin-top: 40px;
+            font-size: 1.3rem;
+            color: #ffcc00;
+        }
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
@@ -100,13 +105,24 @@
             </a>
         </div>
 
-         <p id="contador">Carregando visitas...</p>
+<div class="contador">
+    <p>Número de visitas ao site:</p>
+    <a href="https://www.hitwebcounter.com" target="_blank">
+        <img src="https://hitwebcounter.com/counter/counter.php?page=21376620&style=0036&nbdigits=5&type=page&initCount=0" title="Contador de 
+          visitas" alt="Contador de visitas" border="0" />
+    </a>
+</div>
     </div>
+  
     <script>
-        fetch('https://api.countapi.xyz/hit/mobile-tagging-qr-code/visitas')
+        fetch('https://api.countapi.xyz/hit/innotechhope/visitas')
             .then(response => response.json())
             .then(data => {
-                document.getElementById('contador').innerText = `Número de visitas: ${data.value}`;
+                document.getElementById('visit-count').textContent = data.value;
+            })
+            .catch(error => {
+                console.error('Erro ao acessar o contador:', error);
+                document.getElementById('visit-count').textContent = 'Erro';
             });
     </script>
 </body>
